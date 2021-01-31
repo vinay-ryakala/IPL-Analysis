@@ -61,5 +61,12 @@ public class IplAnalyserTest {
             Assert.assertEquals("MS Dhoni", topStrikeRateHigestBatsmen.get(0).playerName);
         }catch (IPLAnalyserException ignored){}
     }
+    @Test
+    public void givenMostRunCSVFileReturnsCricketersWithMaximumRunWithBestAverages() throws IPLAnalyserException {
+        try {
+            List<IPLBatting> bestAverageHigestRunsBatsmen = iplLeagueAnalysis.getBatsmenWithHigestRunsWithBestAverage(MOST_RUN_CSV_FILE);
+            Assert.assertEquals("David Warner ", bestAverageHigestRunsBatsmen.get(0).playerName);
+        }catch (IPLAnalyserException ignored){}
+    }
 }
 

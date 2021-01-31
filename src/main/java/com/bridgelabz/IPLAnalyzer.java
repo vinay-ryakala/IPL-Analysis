@@ -83,4 +83,16 @@ public class IPLAnalyzer {
                 .collect(Collectors.toList());
         return maxStrikeRateList;
     }
+    public List<IPLBatting> getBatsmenWithHigestRunsWithBestAverage(String filePath) throws IPLAnalyserException {
+        runsCSVList = this.loadRunsCSV(filePath);
+        int maxRuns = runsCSVList.stream().map(i -> i.runsScored).max(Integer::compare).get();
+        List<IPLBatting> maxRunsList = runsCSVList.stream().filter(i -> i.runsScored == maxRuns)
+                .collect(Collectors.toList());
+
+        double highestAverage = maxRunsList.stream().map(i -> i.average).max(Double::compare).get();
+        List<IPLBatting> maximumAvgList = maxRunsList.stream().filter(i -> i.average == highestAverage)
+                .collect(Collectors.toList());
+
+        return maximumAvgList;
+    }
 }

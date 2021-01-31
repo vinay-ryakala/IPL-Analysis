@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.IplAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-31T13:16:50" hostname="DESKTOP-1TCPMKQ" time="0.241">
+<testsuite name="com.bridgelabz.IplAnalyserTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-01-31T13:31:36" hostname="DESKTOP-1TCPMKQ" time="0.483">
   <properties/>
-  <testcase name="givenMostRunCSVFileReturnsBestStrikeRatesWithHigestRuns" classname="com.bridgelabz.IplAnalyserTest" time="0.241"/>
+  <testcase name="givenMostRunCSVFileReturnsTopBattingAverages" classname="com.bridgelabz.IplAnalyserTest" time="0.243"/>
+  <testcase name="givenMostWicketCSVFileReturnsCorrectRecords" classname="com.bridgelabz.IplAnalyserTest" time="0.032"/>
+  <testcase name="givenMostRunCSVFileReturnsBestStrikeRatesWithHigestRuns" classname="com.bridgelabz.IplAnalyserTest" time="0.032"/>
+  <testcase name="givenMostRunCSVFileReturnsCricketersWithMaximumRunWithBestAverages" classname="com.bridgelabz.IplAnalyserTest" time="0.032"/>
+  <testcase name="givenMostRunCSVFileReturnsMost4sAnd6s" classname="com.bridgelabz.IplAnalyserTest" time="0.036"/>
+  <testcase name="givenMostRunCSVFileReturnsCorrectRecords" classname="com.bridgelabz.IplAnalyserTest" time="0.028"/>
+  <testcase name="givenMostRunCSVFileReturnsTop3StrikeRates" classname="com.bridgelabz.IplAnalyserTest" time="0.035"/>
+  <testcase name="givenMostRunCSVFileReturnsBestStrikeRatesWith6sAnd4s" classname="com.bridgelabz.IplAnalyserTest" time="0.041"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
