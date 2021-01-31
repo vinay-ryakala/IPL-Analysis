@@ -98,7 +98,7 @@ public class IPLAnalyzer {
     public List<IPLBowling> getTopBowlerAverages(String filePath) throws IPLAnalyserException {
        wicketsCSVList = this.loadWicketsCSV(filePath);
         List<IPLBowling> sortedAvgList = wicketsCSVList.stream()
-                .sorted(Comparator.comparingDouble(player -> Double.parseDouble(player.average)))
+                .sorted(Comparator.comparingDouble(player -> player.average))
                 .collect(Collectors.toList());
         Collections.reverse(sortedAvgList);
         return sortedAvgList;
@@ -106,7 +106,7 @@ public class IPLAnalyzer {
     public List<IPLBowling> getTopBowlerStrikeRate(String filePath) throws IPLAnalyserException {
         wicketsCSVList = this.loadWicketsCSV(filePath);
         List<IPLBowling> sortedBowlingStrikeRateList = wicketsCSVList.stream()
-                .sorted(Comparator.comparingDouble(player -> Double.parseDouble(player.average)))
+                .sorted(Comparator.comparingDouble(player -> player.strikeRate))
                 .collect(Collectors.toList());
         Collections.reverse(sortedBowlingStrikeRateList);
         return sortedBowlingStrikeRateList;
@@ -115,8 +115,31 @@ public class IPLAnalyzer {
         wicketsCSVList = this.loadWicketsCSV(filePath);
         List<IPLBowling> sortedEconomyList = wicketsCSVList.stream()
                 .sorted(Comparator.comparingDouble(player -> player.economy)).collect(Collectors.toList());
-        System.out.println(sortedEconomyList.get(0));
         return sortedEconomyList;
+    }
+    public List<IPLBowling> getBolwerWithBestStrikeRatesWith5wAnd4w(String filePath) throws IPLAnalyserException {
+        wicketsCSVList = this.loadWicketsCSV(filePath);
+        int mostNum4wAnd5w = wicketsCSVList.stream().map(i -> i.fourWicketHaul + i.fiveWicketHaul).max(Integer::compare).get();
+        List<IPLBowling> max4wAnd5wList =wicketsCSVList.stream().filter(i -> i.fourWicketHaul + i.fiveWicketHaul == mostNum4wAnd5w)
+                .collect(Collectors.toList());
+
+        double maximumStrikeRate = max4wAnd5wList.stream().map(i -> i.strikeRate).max(Double::compare).get();
+
+        List<IPLBowling> StrikeRateList = max4wAnd5wList.stream().filter(i -> i.strikeRate == maximumStrikeRate)
+                .collect(Collectors.toList());
+        return StrikeRateList;
+    }
+    public List<IPLBowling> getGreatAverageWithBestStrikeRatesBowler(String filePath) throws IPLAnalyserException {
+        wicketsCSVList = this.loadWicketsCSV(filePath);
+        Double LowestAverage = wicketsCSVList.stream().map(i -> i.average).min(Double::compare).get();
+        List<IPLBowling> minAverageList = wicketsCSVList.stream()
+                .filter(i -> i.average == LowestAverage).collect(Collectors.toList());
+
+        double LowestStrikeRate = minAverageList.stream().map(i -> i.strikeRate).min(Double::compare).get();
+        List<IPLBowling> lowStrikeRateandMinAverageList = minAverageList.stream()
+                .filter(i -> i.strikeRate== LowestStrikeRate).collect(Collectors.toList());
+
+        return lowStrikeRateandMinAverageList;
     }
 
 }

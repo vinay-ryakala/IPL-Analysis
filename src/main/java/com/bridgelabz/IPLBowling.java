@@ -23,7 +23,7 @@ public class IPLBowling {
     public String wicketsTaken;
 
     @CsvBindByName(column = "Avg", required = true)
-    public String average;
+    public double average;
 
     @CsvBindByName(column = "BBI", required = true)
     public int bbi;
@@ -32,7 +32,7 @@ public class IPLBowling {
     public double economy;
 
     @CsvBindByName(column = "SR", required = true)
-    public String strikeRate;
+    public double strikeRate;
 
     @CsvBindByName(column = "4w", required = true)
     public int fourWicketHaul;

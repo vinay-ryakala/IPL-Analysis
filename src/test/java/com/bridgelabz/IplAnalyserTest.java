@@ -93,5 +93,19 @@ public class IplAnalyserTest {
             Assert.assertEquals(5.5, economyList.get(0).economy,0.0);
         }catch (IPLAnalyserException e){ e.printStackTrace();}
     }
+    @Test
+    public void givenMostWicketsCSVFileReturnsTopBowlingStrikeRateand4wsand5ws() {
+        try {
+            List<IPLBowling> economyList = iplLeagueAnalysis.getBolwerWithBestStrikeRatesWith5wAnd4w(MOST_WICKET_CSV_FILE);
+            Assert.assertEquals("Lasith Malinga", economyList.get(0).playerName);
+        }catch (IPLAnalyserException e){ e.printStackTrace();}
+    }
+    @Test
+    public void givenMostWicketCSVFileReturnsGreatAverageWithBestStrikeRates(){
+        try {
+            List<IPLBowling> economyList = iplLeagueAnalysis.getGreatAverageWithBestStrikeRatesBowler(MOST_WICKET_CSV_FILE);
+            Assert.assertEquals("Anukul Roy", economyList.get(0).playerName);
+        }catch (IPLAnalyserException e){ e.printStackTrace();}
+    }
 }
 

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.IplAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-31T14:26:50" hostname="DESKTOP-1TCPMKQ" time="0.327">
+<testsuite name="com.bridgelabz.IplAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-31T16:06:17" hostname="DESKTOP-1TCPMKQ" time="0.374">
   <properties/>
-  <testcase name="givenMostWicketsCSVFileReturnsTopBowlingEconomy" classname="com.bridgelabz.IplAnalyserTest" time="0.327"/>
-  <system-out><![CDATA[Player =Anukul Roy, Matches=1, Innings=1 oversBowled = 2runsGiven = 11 wickets  = 1 average = 11 BBI = 0 Strike Rate = 12Economy = 5.5 4WicketsHaul = 05WicketsHaul = 0
-]]></system-out>
+  <testcase name="givenMostWicketCSVFileReturnsGreatAverageWithBestStrikeRates" classname="com.bridgelabz.IplAnalyserTest" time="0.374"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
