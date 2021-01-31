@@ -7,34 +7,34 @@ public class IPLBatting {
     public String playerName;
 
     @CsvBindByName(column = "Mat", required = true)
-    public String matchesPlayed;
+    public int matchesPlayed;
 
     @CsvBindByName(column = "Inns", required = true)
-    public String inningsPlayed;
+    public int inningsPlayed;
 
     @CsvBindByName(column = "NO", required = true)
-    public String numberOFNotOuts;
+    public int numberOFNotOuts;
 
     @CsvBindByName(column = "Runs", required = true)
-    public String runsScored;
+    public int runsScored;
 
     @CsvBindByName(column = "HS", required = true)
     public String highestScore;
 
     @CsvBindByName(column = "Avg", required = true)
-    public String average;
+    public double average;
 
     @CsvBindByName(column = "BF", required = true)
-    public String ballsFaced;
+    public int ballsFaced;
 
     @CsvBindByName(column = "SR", required = true)
-    public String strikeRate;
+    public double strikeRate;
 
     @CsvBindByName(column = "100", required = true)
-    public String hundredsScored;
+    public int hundredsScored;
 
     @CsvBindByName(column = "50", required = true)
-    public String fiftiesScored;
+    public int fiftiesScored;
 
     @CsvBindByName(column = "4s", required = true)
     public int foursCollected;
