@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class IPLAnalyzer {
@@ -54,5 +55,14 @@ public class IPLAnalyzer {
                 .collect(Collectors.toList());
         Collections.reverse(sortedStrikeRateList);
         return sortedStrikeRateList;
+    }
+    public List<IPLBatting> getMax4And6s(String filePath) throws IPLAnalyserException {
+        runsCSVList = this.loadRunsCSV(filePath);
+
+        //int mostNumBoundaries = mostRunList.stream().map(i -> i.num4s + i.num6s).max(Integer::compare).get();
+        List<IPLBatting> max4sAnd6sList = runsCSVList.stream().sorted(Comparator.comparingDouble(i -> i.foursCollected + i.sixesCollected))
+                .collect(Collectors.toList());
+        Collections.reverse(max4sAnd6sList);
+        return max4sAnd6sList;
     }
 }
