@@ -1,5 +1,4 @@
 package com.bridgelabz;
-import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -8,7 +7,6 @@ import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class IPLAnalyzer {
@@ -65,12 +63,23 @@ public class IPLAnalyzer {
     }
     public List<IPLBatting> getBestStrikeRateWith6sAnd4s(String filePath) throws IPLAnalyserException {
         runsCSVList = this.loadRunsCSV(filePath);
-      int mostNumBoundaries = runsCSVList.stream().map(i -> i.foursCollected + i.sixesCollected).max(Integer::compare).get();
+        int mostNumBoundaries = runsCSVList.stream().map(i -> i.foursCollected + i.sixesCollected).max(Integer::compare).get();
         List<IPLBatting> max4sAnd6sList = runsCSVList.stream().filter(i -> i.foursCollected + i.sixesCollected == mostNumBoundaries)
                 .collect(Collectors.toList());
 
         double HighestStrikeRate = max4sAnd6sList.stream().map(i -> i.strikeRate).max(Double::compare).get();
         List<IPLBatting> maxStrikeRateList = max4sAnd6sList.stream().filter(i -> i.strikeRate == HighestStrikeRate)
+                .collect(Collectors.toList());
+        return maxStrikeRateList;
+    }
+    public List<IPLBatting> getHigestAverageWithBestStrikeRates(String filePath) throws IPLAnalyserException {
+        runsCSVList = this.loadRunsCSV(filePath);
+        Double HighestAverage = runsCSVList.stream().map(i -> i.average).max(Double::compare).get();
+        List<IPLBatting> maxAverageList = runsCSVList.stream().filter(i -> i.average == HighestAverage)
+                .collect(Collectors.toList());
+
+        double HighestStrikeRate = maxAverageList.stream().map(i -> i.strikeRate).max(Double::compare).get();
+        List<IPLBatting> maxStrikeRateList = maxAverageList.stream().filter(i -> i.strikeRate == HighestStrikeRate)
                 .collect(Collectors.toList());
         return maxStrikeRateList;
     }
