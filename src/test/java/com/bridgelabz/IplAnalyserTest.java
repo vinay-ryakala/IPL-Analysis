@@ -16,6 +16,7 @@ public class IplAnalyserTest {
             List numOfRecords = iplLeagueAnalysis.loadRunsCSV(MOST_RUN_CSV_FILE);
             Assert.assertEquals(101, numOfRecords.size());
         } catch (IPLAnalyserException e) {
+            e.printStackTrace();
         }
     }
 
@@ -23,8 +24,9 @@ public class IplAnalyserTest {
     public void givenMostWicketCSVFileReturnsCorrectRecords() {
         try {
             List numOfRecords = iplLeagueAnalysis.loadWicketsCSV(MOST_WICKET_CSV_FILE);
-            Assert.assertEquals(99, numOfRecords.size());
+            Assert.assertEquals(86, numOfRecords.size());
         } catch (IPLAnalyserException e) {
+            e.printStackTrace();
         }
     }
 
@@ -52,7 +54,7 @@ public class IplAnalyserTest {
       try {
           List<IPLBatting> strikeRateTopBatsmen = iplLeagueAnalysis.getBestStrikeRateWith6sAnd4s(MOST_RUN_CSV_FILE);
           Assert.assertEquals("Andre Russell", strikeRateTopBatsmen.get(0).playerName);
-      }catch (IPLAnalyserException e){}
+      }catch (IPLAnalyserException e){ e.printStackTrace();}
     }
     @Test
     public void givenMostRunCSVFileReturnsBestStrikeRatesWithHigestRuns()  {
@@ -62,11 +64,27 @@ public class IplAnalyserTest {
         }catch (IPLAnalyserException ignored){}
     }
     @Test
-    public void givenMostRunCSVFileReturnsCricketersWithMaximumRunWithBestAverages() throws IPLAnalyserException {
+    public void givenMostRunCSVFileReturnsCricketersWithMaximumRunWithBestAverages()  {
         try {
             List<IPLBatting> bestAverageHigestRunsBatsmen = iplLeagueAnalysis.getBatsmenWithHigestRunsWithBestAverage(MOST_RUN_CSV_FILE);
             Assert.assertEquals("David Warner ", bestAverageHigestRunsBatsmen.get(0).playerName);
         }catch (IPLAnalyserException ignored){}
+    }
+    @Test
+    public void givenMostWicketsCSVFileReturnsTopBowlingAverages(){
+        try {
+            List<IPLBowling> averageList = iplLeagueAnalysis.getTopBowlerAverages(MOST_WICKET_CSV_FILE);
+            Assert.assertEquals("Krishnappa Gowtham", averageList.get(0).playerName);
+        }catch (IPLAnalyserException e){
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void givenMostWicketsCSVFileReturnsTopBowlingStrikeRates() {
+        try {
+            List<IPLBowling> averageList = iplLeagueAnalysis.getTopBowlerStrikeRate(MOST_WICKET_CSV_FILE);
+            Assert.assertEquals("Krishnappa Gowtham", averageList.get(0).playerName);
+        }catch (IPLAnalyserException e){ e.printStackTrace();}
     }
 }
 

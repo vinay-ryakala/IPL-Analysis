@@ -95,4 +95,21 @@ public class IPLAnalyzer {
 
         return maximumAvgList;
     }
+    public List<IPLBowling> getTopBowlerAverages(String filePath) throws IPLAnalyserException {
+       wicketsCSVList = this.loadWicketsCSV(filePath);
+        List<IPLBowling> sortedAvgList = wicketsCSVList.stream()
+                .sorted(Comparator.comparingDouble(player -> Double.parseDouble(player.average)))
+                .collect(Collectors.toList());
+        Collections.reverse(sortedAvgList);
+        return sortedAvgList;
+    }
+    public List<IPLBowling> getTopBowlerStrikeRate(String filePath) throws IPLAnalyserException {
+        wicketsCSVList = this.loadWicketsCSV(filePath);
+        List<IPLBowling> sortedBowlingStrikeRateList = wicketsCSVList.stream()
+                .sorted(Comparator.comparingDouble(player -> Double.parseDouble(player.average)))
+                .collect(Collectors.toList());
+        Collections.reverse(sortedBowlingStrikeRateList);
+        return sortedBowlingStrikeRateList;
+    }
+
 }
