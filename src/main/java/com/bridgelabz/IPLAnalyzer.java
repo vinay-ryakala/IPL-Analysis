@@ -111,5 +111,12 @@ public class IPLAnalyzer {
         Collections.reverse(sortedBowlingStrikeRateList);
         return sortedBowlingStrikeRateList;
     }
+    public List<IPLBowling> getTopBestEconomy(String filePath) throws IPLAnalyserException {
+        wicketsCSVList = this.loadWicketsCSV(filePath);
+        List<IPLBowling> sortedEconomyList = wicketsCSVList.stream()
+                .sorted(Comparator.comparingDouble(player -> player.economy)).collect(Collectors.toList());
+        System.out.println(sortedEconomyList.get(0));
+        return sortedEconomyList;
+    }
 
 }

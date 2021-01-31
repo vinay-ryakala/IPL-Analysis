@@ -86,5 +86,12 @@ public class IplAnalyserTest {
             Assert.assertEquals("Krishnappa Gowtham", averageList.get(0).playerName);
         }catch (IPLAnalyserException e){ e.printStackTrace();}
     }
+    @Test
+    public void givenMostWicketsCSVFileReturnsTopBowlingEconomy() {
+        try {
+            List<IPLBowling> economyList = iplLeagueAnalysis.getTopBestEconomy(MOST_WICKET_CSV_FILE);
+            Assert.assertEquals(5.5, economyList.get(0).economy,0.0);
+        }catch (IPLAnalyserException e){ e.printStackTrace();}
+    }
 }
 
