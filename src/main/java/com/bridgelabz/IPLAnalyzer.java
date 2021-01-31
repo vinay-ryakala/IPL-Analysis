@@ -58,11 +58,20 @@ public class IPLAnalyzer {
     }
     public List<IPLBatting> getMax4And6s(String filePath) throws IPLAnalyserException {
         runsCSVList = this.loadRunsCSV(filePath);
-
-        //int mostNumBoundaries = mostRunList.stream().map(i -> i.num4s + i.num6s).max(Integer::compare).get();
         List<IPLBatting> max4sAnd6sList = runsCSVList.stream().sorted(Comparator.comparingDouble(i -> i.foursCollected + i.sixesCollected))
                 .collect(Collectors.toList());
         Collections.reverse(max4sAnd6sList);
         return max4sAnd6sList;
+    }
+    public List<IPLBatting> getBestStrikeRateWith6sAnd4s(String filePath) throws IPLAnalyserException {
+        runsCSVList = this.loadRunsCSV(filePath);
+      int mostNumBoundaries = runsCSVList.stream().map(i -> i.foursCollected + i.sixesCollected).max(Integer::compare).get();
+        List<IPLBatting> max4sAnd6sList = runsCSVList.stream().filter(i -> i.foursCollected + i.sixesCollected == mostNumBoundaries)
+                .collect(Collectors.toList());
+
+        double HighestStrikeRate = max4sAnd6sList.stream().map(i -> i.strikeRate).max(Double::compare).get();
+        List<IPLBatting> maxStrikeRateList = max4sAnd6sList.stream().filter(i -> i.strikeRate == HighestStrikeRate)
+                .collect(Collectors.toList());
+        return maxStrikeRateList;
     }
 }

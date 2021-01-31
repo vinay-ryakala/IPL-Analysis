@@ -41,9 +41,19 @@ public class IplAnalyserTest {
         Assert.assertEquals(333.33, strikeRateTopBatsmen.get(0).strikeRate, 0.0);
         Assert.assertEquals("Ishant Sharma", strikeRateTopBatsmen.get(0).playerName);
     }
+
     @Test
     public void givenMostRunCSVFileReturnsMost4sAnd6s() throws IPLAnalyserException {
         List<IPLBatting> strikeRateTopBatsmen = iplLeagueAnalysis.getMax4And6s(MOST_RUN_CSV_FILE);
         Assert.assertEquals("Andre Russell", strikeRateTopBatsmen.get(0).playerName);
     }
+@Test
+    public void givenMostRunCSVFileReturnsBestStrikeRatesWith6sAnd4s() throws IPLAnalyserException {
+      try {
+          List<IPLBatting> strikeRateTopBatsmen = iplLeagueAnalysis.getBestStrikeRateWith6sAnd4s(MOST_RUN_CSV_FILE);
+          Assert.assertEquals("Andre Russell", strikeRateTopBatsmen.get(0).playerName);
+      }catch (IPLAnalyserException e){}
+    }
+
 }
+
