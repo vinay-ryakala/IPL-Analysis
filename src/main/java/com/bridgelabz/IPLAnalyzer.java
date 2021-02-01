@@ -167,7 +167,7 @@ public class IPLAnalyzer {
         List<IPLBowling> sortedAvgBowlerList = wicketsCSVList.stream()
                 .sorted(Comparator.comparingDouble(player -> player.average))
                 .collect(Collectors.toList());
-
+        Collections.reverse(sortedAvgBowlerList);
         for (IPLBatting bat : sortedAvgBatsmenList) {
             for (IPLBowling bowl : sortedAvgBowlerList) {
                 if (bat.playerName.equals(bowl.playerName)) {
@@ -176,5 +176,26 @@ public class IPLAnalyzer {
             }
         }
         return bestplayerList;
+    }
+    public List<String> toGetBestAllRounder(String filePath,String filePath1) throws IPLAnalyserException {
+        runsCSVList = this.loadRunsCSV(filePath);
+        wicketsCSVList = this.loadWicketsCSV(filePath1);
+
+        List<String> bestAllRounderList = new ArrayList<>();
+
+        List<IPLBatting> sortedRunBatsmenList = runsCSVList.stream()
+                .sorted(Comparator.comparingDouble(player -> player.runsScored)).collect(Collectors.toList());
+        Collections.reverse(sortedRunBatsmenList);
+        System.out.println(sortedRunBatsmenList.get(0));
+        List<IPLBowling> sortedWicketBowlerList = wicketsCSVList.stream()
+                .sorted(Comparator.comparingDouble(player -> player.wicketsTaken)).collect(Collectors.toList());
+      Collections.reverse(sortedWicketBowlerList);
+        for (IPLBatting bat : sortedRunBatsmenList) {
+            for (IPLBowling bowl : sortedWicketBowlerList) {
+                if (bat.playerName.equals(bowl.playerName))
+                    bestAllRounderList.add(bat.playerName);
+            }
+        }
+        return bestAllRounderList;
     }
 }

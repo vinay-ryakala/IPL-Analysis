@@ -119,5 +119,10 @@ public class IplAnalyserTest {
         List<String> bestAvgPlayer = iplLeagueAnalysis.getListOfPlayersWithBestBattingAndBowlingAverages(MOST_RUN_CSV_FILE,MOST_WICKET_CSV_FILE);
         Assert.assertEquals("Andre Russell", bestAvgPlayer.get(0));
     }
+    @Test
+    public void givenCSVFilesReturnsCricketersWithBestAllrounder() throws IPLAnalyserException {
+        List<String> bestAvgPlayer = iplLeagueAnalysis.toGetBestAllRounder(MOST_RUN_CSV_FILE,MOST_WICKET_CSV_FILE);
+        Assert.assertEquals("Andre Russell", bestAvgPlayer.get(0));
+    }
 }
 
