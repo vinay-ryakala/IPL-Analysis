@@ -107,5 +107,12 @@ public class IplAnalyserTest {
             Assert.assertEquals("Anukul Roy", economyList.get(0).playerName);
         }catch (IPLAnalyserException e){ e.printStackTrace();}
     }
+    @Test
+    public void givenMostWicketCSVFileReturnsCricketersWithMaximumWicketsWithBestAverages(){
+        try {
+            List<IPLBowling> mostWicketAndBestAverageList = iplLeagueAnalysis.getlistOfMaximumWicketsWithBestAverages(MOST_WICKET_CSV_FILE);
+            Assert.assertEquals("Imran Tahir", mostWicketAndBestAverageList.get(0).playerName);
+        }catch (IPLAnalyserException e){ e.printStackTrace();}
+    }
 }
 

@@ -141,5 +141,18 @@ public class IPLAnalyzer {
 
         return lowStrikeRateandMinAverageList;
     }
+    public List<IPLBowling> getlistOfMaximumWicketsWithBestAverages(String filePath) throws IPLAnalyserException {
+        wicketsCSVList = this.loadWicketsCSV(filePath);
+        Integer maxWickets = wicketsCSVList.stream().map(i -> i.wicketsTaken).max(Integer::compare).get();
+        List<IPLBowling> maxWicketsList = wicketsCSVList.stream().filter(i -> i.wicketsTaken == maxWickets)
+                .collect(Collectors.toList());
+
+        double LowestAvgRate = maxWicketsList.stream().map(i -> i.average).min(Double::compare).get();
+        List<IPLBowling> LowestAvgRateList = maxWicketsList.stream()
+                .filter(i -> i.average == LowestAvgRate).collect(Collectors.toList());
+
+        return LowestAvgRateList;
+    }
+
 
 }

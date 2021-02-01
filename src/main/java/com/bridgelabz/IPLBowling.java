@@ -20,7 +20,7 @@ public class IPLBowling {
     public String runsGiven;
 
     @CsvBindByName(column = "Wkts", required = true)
-    public String wicketsTaken;
+    public int wicketsTaken;
 
     @CsvBindByName(column = "Avg", required = true)
     public double average;
