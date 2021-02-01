@@ -198,4 +198,18 @@ public class IPLAnalyzer {
         }
         return bestAllRounderList;
     }
+    public List<IPLBatting> getPlayersWithMaximum100sWithBestAverages(String filePath) throws IPLAnalyserException {
+        runsCSVList = this.loadRunsCSV(filePath);
+        int maximumHundreds = runsCSVList.stream().map(i -> i.hundredsScored).max(Integer::compare).get();
+        List<IPLBatting> maxHundredsList = runsCSVList.stream().filter(i -> i.hundredsScored == maximumHundreds)
+                .collect(Collectors.toList());
+
+        double highestAverage = maxHundredsList.stream().map(i -> i.average).max(Double::compare).get();
+
+        List<IPLBatting> maxAvgList = maxHundredsList.stream().filter(i -> i.average == highestAverage)
+                .collect(Collectors.toList());
+
+        return maxAvgList;
+    }
+
 }
