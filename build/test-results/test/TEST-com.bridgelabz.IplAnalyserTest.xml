@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.IplAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-01T09:23:20" hostname="DESKTOP-1TCPMKQ" time="0.229">
+<testsuite name="com.bridgelabz.IplAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-02-01T09:31:10" hostname="DESKTOP-1TCPMKQ" time="0.222">
   <properties/>
-  <testcase name="givenMostRunCSVFileReturnsCricketersWithMaximum100sWithBestAverages" classname="com.bridgelabz.IplAnalyserTest" time="0.229"/>
+  <testcase name="givenMostRunCSVFileReturnsCricketersWithZeroHundredsAndFiftiesButBestAvg" classname="com.bridgelabz.IplAnalyserTest" time="0.222"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

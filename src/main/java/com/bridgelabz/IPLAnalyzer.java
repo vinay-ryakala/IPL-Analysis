@@ -205,11 +205,21 @@ public class IPLAnalyzer {
                 .collect(Collectors.toList());
 
         double highestAverage = maxHundredsList.stream().map(i -> i.average).max(Double::compare).get();
-
         List<IPLBatting> maxAvgList = maxHundredsList.stream().filter(i -> i.average == highestAverage)
                 .collect(Collectors.toList());
 
         return maxAvgList;
     }
 
+    public List<IPLBatting> getPlayerWithZeroHundredsAndFiftiesButBestAvg(String mostRunCsvFile) throws IPLAnalyserException {
+        runsCSVList = this.loadRunsCSV(mostRunCsvFile);
+        List<IPLBatting> zeroHundredsAndFifties = runsCSVList.stream().filter(i -> i.hundredsScored + i.fiftiesScored == 0)
+                .collect(Collectors.toList());
+
+        double highestAvg = zeroHundredsAndFifties.stream().map(i -> i.average).max(Double::compare).get();
+        List<IPLBatting> maxAvgList = zeroHundredsAndFifties.stream().filter(i -> i.average == highestAvg)
+                .collect(Collectors.toList());
+
+        return maxAvgList;
+    }
 }

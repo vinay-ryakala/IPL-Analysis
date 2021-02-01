@@ -129,5 +129,10 @@ public class IplAnalyserTest {
         List<IPLBatting> listOfMaxHundreds = iplLeagueAnalysis.getPlayersWithMaximum100sWithBestAverages(MOST_RUN_CSV_FILE);
         Assert.assertEquals("David Warner ", listOfMaxHundreds.get(0).playerName);
     }
+    @Test
+    public void givenMostRunCSVFileReturnsCricketersWithZeroHundredsAndFiftiesButBestAvg() throws IPLAnalyserException{
+        List<IPLBatting> listOfZeroHundredsAndFiftiesButBestAvg = iplLeagueAnalysis.getPlayerWithZeroHundredsAndFiftiesButBestAvg(MOST_RUN_CSV_FILE);
+        Assert.assertEquals("Marcus Stoinis", listOfZeroHundredsAndFiftiesButBestAvg.get(0).playerName);
+    }
 }
 
