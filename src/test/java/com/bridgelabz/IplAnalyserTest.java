@@ -114,5 +114,10 @@ public class IplAnalyserTest {
             Assert.assertEquals("Imran Tahir", mostWicketAndBestAverageList.get(0).playerName);
         }catch (IPLAnalyserException e){ e.printStackTrace();}
     }
+    @Test
+    public void givenCSVFilesReturnsCricketersWithBestBattingAndBowlingAverages() throws IPLAnalyserException {
+        List<String> bestAvgPlayer = iplLeagueAnalysis.getListOfPlayersWithBestBattingAndBowlingAverages(MOST_RUN_CSV_FILE,MOST_WICKET_CSV_FILE);
+        Assert.assertEquals("Andre Russell", bestAvgPlayer.get(0));
+    }
 }
 
